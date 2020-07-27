@@ -15,12 +15,13 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const posts = [];
+let posts = [];
 
 app.get("/", function(req, res) {
-  res.render("home", {homeText: homeStartingContent});
-
-  console.log(posts);
+  res.render("home", {
+    homeText: homeStartingContent,
+    postArray: posts
+  })
 })
 
 app.get("/about", function(req, res) {
